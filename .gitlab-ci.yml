@@ -8,9 +8,8 @@ build:
   stage: build
   image: node:8.11.3
   script:
-      - export API_URL="https://api.logicwind.com/"      
       - npm install
-      - npm run build
+      - ng build --prod --aot
       - echo "BUILD SUCCESSFULLY"
   artifacts:
     paths:
@@ -23,7 +22,7 @@ build:
 
 deploy:
   stage: deploy
-  image: python:3.5
+  environment: Stage
   dependencies:
     - build
   script:
