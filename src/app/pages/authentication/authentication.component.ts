@@ -17,7 +17,7 @@ export class AuthenticationComponent implements OnInit {
   }
 
   ngOnInit(){
-    console.log("lets try some message at console");
+    console.log("Is it really working, I can't believe");
     this.signUpForm=this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
