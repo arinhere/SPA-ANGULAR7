@@ -9,7 +9,7 @@ build:
   image: node:8.11.3
   script:
       - npm install
-      - ng build --prod --aot
+      - npm run build:prod
       - echo "BUILD SUCCESSFULLY"
   artifacts:
     paths:
