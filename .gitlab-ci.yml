@@ -8,7 +8,7 @@ build:
   stage: build
   image: node:8.11.3
   script:
-      - export API_URL="https://api.logicwind.com/"      //any evnvironment variables your code requires
+      - export API_URL="https://api.logicwind.com/"      
       - npm install
       - npm run build
       - echo "BUILD SUCCESSFULLY"
@@ -27,7 +27,7 @@ deploy:
   dependencies:
     - build
   script:
-    - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID       // same variable we declared in gitlab CI settings
+    - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID       
     - export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
     - export S3_BUCKET_NAME=$S3_BUCKET_NAME
     - export DISTRIBUTION_ID=$DISTRIBUTION_ID
