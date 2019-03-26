@@ -13,7 +13,7 @@ build:
       - echo "BUILD SUCCESSFULLY"
   artifacts:
     paths:
-      - dist/
+      - dist/ngrxTest
     expire_in: 20 mins
   environment:
     name: production
