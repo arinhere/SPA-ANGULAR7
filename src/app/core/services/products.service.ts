@@ -5,8 +5,8 @@ import { Store } from '@ngrx/store';
 
 @Injectable()
 export class ProductService{
-    //apiEP="http://ec2-3-83-188-115.compute-1.amazonaws.com:8080/api/";
-    apiEP="http://localhost:3000/api/";
+    apiEP="http://ec2-3-83-188-115.compute-1.amazonaws.com:8080/api/";
+    //apiEP="http://localhost:3000/api/";
 
     constructor(
         private _http: HttpClient, 
