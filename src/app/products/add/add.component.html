@@ -3,7 +3,8 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
-            Add Product
+                <span *ngIf="!pid">Add Product</span>
+                <span *ngIf="pid">Update Product</span>
             </h4>
             <div style="float: right; padding-top: 20px;"><a href="javascript:void(0)" [routerLink]="['/products/list']">List Products</a></div>
         </div>
@@ -12,9 +13,9 @@
             <form [formGroup]="addProductForm" (ngSubmit)="onSubmit(addProductForm)" novalidate>
               <div class="form-group">
                   <label>Title</label>
-                  <input type="text" formControlName="title" placeholder="Product Name" class="form-control" [ngClass]="{ 'is-invalid': f.title.errors }" />
-                  <div *ngIf="f.title.errors" class="invalid-feedback">
-                      <div *ngIf="f.title.errors.required">First Name is required</div>
+                  <input type="text" formControlName="title" placeholder="Product Name" class="form-control" [ngClass]="{ 'is-invalid': f.title.touched && f.title.errors }" />
+                  <div *ngIf="f.title.touched && f.title.errors" class="invalid-feedback">
+                      <div *ngIf="f.title.touched && f.title.errors.required">First Name is required</div>
                   </div>
               </div>
               <div class="form-group">
@@ -23,13 +24,14 @@
               </div>
               <div class="form-group">
                   <label>Price</label>
-                  <input type="text" formControlName="price" placeholder="Product Cost" class="form-control" [ngClass]="{ 'is-invalid': f.price.errors }" />
-                  <div *ngIf="f.price.errors" class="invalid-feedback">
-                      <div *ngIf="f.price.errors.required">Price is required</div>
+                  <input type="text" formControlName="price" placeholder="Product Cost" class="form-control" [ngClass]="{ 'is-invalid': f.price.touched && f.price.errors }" />
+                  <div *ngIf="f.price.touched && f.price.errors" class="invalid-feedback">
+                      <div *ngIf="f.price.touched && f.price.errors.required">Price is required</div>
                   </div>
               </div>
               <div class="form-group">
-                  <button type="submit" class="btn btn-primary">Add</button>
+                  <button type="submit" class="btn btn-primary" *ngIf="!pid" [disabled]="addProductForm.invalid">Add Product</button>
+                  <button type="submit" class="btn btn-primary" *ngIf="pid" [disabled]="addProductForm.invalid">Update Product</button>
               </div>
             </form>
         </div>

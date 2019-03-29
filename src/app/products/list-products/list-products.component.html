@@ -1,3 +1,28 @@
-  <ul class="list-group" *ngFor="let item of itemList" style="padding-top: 10px;">
-    <li class="list-group-item" style="padding-top: 5px;">{{item.title}} - {{item.price}}</li>
-  </ul>
+  <h4>All Products</h4>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <table class="table table-responsive">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of itemList" style="padding-top: 10px;">
+            <td>{{item.title}}</td>
+            <td>{{item.description}}</td>
+            <td>{{item.price}}</td>
+            <td>
+              <a href="javascript:void(0)" (click)="navigate('edit',item._id)">Edit</a> |
+              <a href="javascript:void(0)" (click)="navigate('delete',item._id)">Delete</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>

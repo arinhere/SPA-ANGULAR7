@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import { TestService } from '../../core/services/test.services';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-authentication',
@@ -13,7 +14,7 @@ export class AuthenticationComponent implements OnInit {
   signUpForm: FormGroup;
   loginForm: FormGroup;
 
-  constructor(private _testService:TestService, private fb: FormBuilder){
+  constructor(private _testService:TestService, private fb: FormBuilder, private _snack: MatSnackBar){
   }
 
   ngOnInit(){
@@ -22,19 +23,31 @@ export class AuthenticationComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required,Validators.email]],
-      password: ['', [Validators.required,Validators.minLength(8)]]
+      password: ['', [Validators.required,Validators.minLength(6)]]
     })
 
     this.loginForm=this.fb.group({
       email: ['', [Validators.required,Validators.email]],
-      password: ['', [Validators.required,Validators.minLength(8)]]
+      password: ['', [Validators.required,Validators.minLength(6)]]
     })
   }
 
   onSubmit(formVal){
     this._testService.signUp(formVal.value)
       .subscribe(res=>{
-        console.log(res)
+        this.signUpForm.reset();
+        this._snack.open("User Created. Login to continnue.",'Success',{
+          duration: 5000,
+          horizontalPosition: "right",
+          verticalPosition: "bottom"
+        });
+      },
+      err=>{
+        this._snack.open("Error creating user",'Error',{
+          duration: 5000,
+          horizontalPosition: "right",
+          verticalPosition: "bottom"
+        });
       })
   }
 
@@ -44,7 +57,16 @@ export class AuthenticationComponent implements OnInit {
   onLogin(formVal){
     this._testService.login(formVal.value)
       .subscribe(res=>{
-        localStorage.setItem("token",res['token'])
+        this.loginForm.reset();
+        localStorage.setItem("token",res['token']);
+        alert("Token Created by server: " + res["token"]);
+      },
+      err=>{
+        this._snack.open("Invalid login details.",'Error',{
+          duration: 5000,
+          horizontalPosition: "right",
+          verticalPosition: "bottom"
+        });
       })
   }
 

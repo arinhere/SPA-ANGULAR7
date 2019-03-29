@@ -7,7 +7,7 @@ import { TestService } from './core/services/test.services';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ServiceInterceptor } from './core/interceptor/service.interceptor';
 import {ReactiveFormsModule} from '@angular/forms';
-import {MatInputModule, MatButtonModule} from '@angular/material';
+import {MatInputModule, MatButtonModule, MatSnackBarModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AuthenticationComponent } from './pages/authentication/authentication.component';
@@ -31,6 +31,7 @@ import { AppReducer } from './app.reducer';
     ReactiveFormsModule,
     MatInputModule,
     MatButtonModule,
+    MatSnackBarModule,
     ProductsModule,
     BrowserAnimationsModule,
     //NGRX Module Import
@@ -38,6 +39,11 @@ import { AppReducer } from './app.reducer';
     //NGRX Module Import End
     RouterModule,
     AppRoutingModule,
+  ],
+  exports:[
+    MatInputModule,
+    MatButtonModule,
+    MatSnackBarModule
   ],
   providers: [
     TestService,
