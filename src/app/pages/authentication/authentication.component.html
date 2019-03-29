@@ -64,7 +64,7 @@
               <form [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm)" novalidate>
                   <div class="form-group">
                       <label>Email</label>
-                      <input type="text" placeholder="Use: arinhere@gmail.com" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': loginControl.email.touched && loginControl.email.errors }" />
+                      <input type="text" placeholder="Use: bhasco@gmail.com" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': loginControl.email.touched && loginControl.email.errors }" />
                       <div *ngIf="loginControl.email.touched && loginControl.email.errors" class="invalid-feedback">
                           <div *ngIf="loginControl.email.touched && loginControl.email.errors.required">Email is required</div>
                           <div *ngIf="loginControl.email.touched && loginControl.email.errors.email">Email must be a valid email address</div>
@@ -72,7 +72,7 @@
                   </div>
                   <div class="form-group">
                       <label>Password</label>
-                      <input type="password" placeholder="Use: arindam" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': loginControl.password.touched && loginControl.password.errors }" />
+                      <input type="password" placeholder="Use: bhasco" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': loginControl.password.touched && loginControl.password.errors }" />
                       <div *ngIf="loginControl.password.touched && loginControl.password.errors" class="invalid-feedback">
                           <div *ngIf="loginControl.password.touched && loginControl.password.errors.required">Password is required</div>
                           <div *ngIf="loginControl.password.touched && loginControl.password.errors.minlength">Password must be at least 6 characters</div>
