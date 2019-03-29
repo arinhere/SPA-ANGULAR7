@@ -18,6 +18,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { AppReducer } from './app.reducer';
+import { BehaviorService } from './core/behave/behave.service';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,7 @@ import { AppReducer } from './app.reducer';
     MatSnackBarModule
   ],
   providers: [
-    TestService,
+    TestService,BehaviorService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ServiceInterceptor,
